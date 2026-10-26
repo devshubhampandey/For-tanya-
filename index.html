@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fellow Coder Challenge | Shubham</title>
+  <meta name="description" content="A tiny interactive coding challenge and a hello to a fellow coder." />
+
+  <!-- Google Fonts (the site still works if these fail to load) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="page">
+
+    <!-- SECTION 1: HEADER -->
+    <header class="site-header">
+      <a class="logo" href="#top" aria-label="shubham.dev home">&lt; shubham.dev /&gt;</a>
+      <span class="status-label">Built with curiosity</span>
+    </header>
+
+    <main id="top">
+
+      <!-- SECTION 2: HERO -->
+      <section class="hero" aria-labelledby="hero-title">
+        <p class="hero-tag">// a hello to a fellow coder</p>
+        <h1 id="hero-title" class="hero-title">Built with curiosity.</h1>
+        <p class="hero-text">
+          A tiny coding experiment, a little JavaScript, and one simple hello.
+        </p>
+      </section>
+
+      <!-- SECTION 3: INTERACTIVE CHALLENGE -->
+      <section class="challenge" aria-labelledby="challenge-question">
+        <div class="terminal">
+          <div class="terminal-bar">
+            <span class="dot dot-one" aria-hidden="true"></span>
+            <span class="dot dot-two" aria-hidden="true"></span>
+            <span class="dot dot-three" aria-hidden="true"></span>
+            <span class="terminal-filename">challenge.js</span>
+          </div>
+
+          <div class="terminal-body">
+            <p id="challenge-question" class="challenge-question">
+              Quick coding challenge: What will this JavaScript code print?
+            </p>
+
+<pre class="code-block"><code>const a = 3;
+const b = "2";
+
+console.log(a + b);</code></pre>
+
+            <div class="answers" role="group" aria-label="Answer choices">
+              <button type="button" class="answer-btn" data-answer="5">5</button>
+              <button type="button" class="answer-btn" data-answer="32">32</button>
+              <button type="button" class="answer-btn" data-answer="Error">Error</button>
+            </div>
+
+            <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: PERSONAL INTRODUCTION (hidden until the correct answer) -->
+      <section id="intro" class="intro" aria-labelledby="intro-title" hidden>
+        <article class="intro-card">
+          <h2 id="intro-title" class="intro-title">Hey, Tanya! 👋</h2>
+          <p>
+            I'm Shubham. I came across your coding reel and liked seeing someone
+            around my age building projects and sharing her coding journey.
+          </p>
+          <p>
+            I'm learning to code too, and I want to build some cool things of my
+            own someday. Thought I'd make this tiny page instead of sending just
+            a regular hello. 😅
+          </p>
+          <p>Anyway, nice to meet you, fellow coder!</p>
+          <p class="intro-question">What are you working on these days?</p>
+          <p class="signature">— Shubham.dev</p>
+        </article>
+      </section>
+
+    </main>
+
+    <!-- SECTION 5: FOOTER -->
+    <footer class="site-footer">
+      <p class="footer-line footer-sign">One step at a time. — Shubham</p>
+    </footer>
+
+  </div>
+</body>
+</html>
