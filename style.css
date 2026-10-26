@@ -1,0 +1,380 @@
+/* ---------- 1. Design tokens (colors, fonts, spacing) ---------- */
+:root {
+  --bg: #0a0d1a;
+  --bg-soft: #11152a;
+  --card: #0f1326;
+  --border: rgba(167, 139, 250, 0.22);
+  --text: #e8eaf6;
+  --muted: #a3a9c9;
+  --purple: #a78bfa;
+  --purple-deep: #7c5cf0;
+  --success: #6ee7b7;
+  --hint: #fbbf77;
+  --radius: 16px;
+
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, "Courier New", Consolas, monospace;
+}
+
+/* ---------- 2. Base / reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(124, 92, 240, 0.22), transparent 45%),
+    radial-gradient(circle at 90% 35%, rgba(167, 139, 250, 0.12), transparent 40%);
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+}
+
+/* Makes sure the "hidden" attribute always wins */
+[hidden] {
+  display: none !important;
+}
+
+.page {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+/* ---------- 3. Header ---------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  animation: fade-up 0.7s ease both;
+}
+
+.logo {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--purple);
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.status-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ---------- 4. Hero ---------- */
+.hero {
+  padding: 48px 0 32px;
+  animation: fade-up 0.8s ease 0.15s both;
+}
+
+.hero-tag {
+  margin: 0 0 12px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--purple);
+}
+
+.hero-title {
+  margin: 0 0 14px;
+  font-size: clamp(2.2rem, 10vw, 3.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  background: linear-gradient(120deg, #ffffff 30%, var(--purple) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.hero-text {
+  margin: 0;
+  max-width: 46ch;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+/* ---------- 5. Terminal challenge card ---------- */
+.challenge {
+  animation: fade-up 0.8s ease 0.3s both;
+}
+
+.terminal {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(124, 92, 240, 0.15);
+}
+
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 14px;
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--border);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  opacity: 0.85;
+}
+.dot-one { background: #f87171; }
+.dot-two { background: #fbbf24; }
+.dot-three { background: #4ade80; }
+
+.terminal-filename {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.terminal-body {
+  padding: 18px 16px 20px;
+}
+
+.challenge-question {
+  margin: 0 0 14px;
+  font-weight: 500;
+}
+
+.code-block {
+  margin: 0 0 18px;
+  padding: 14px;
+  background: #080b17;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: #d9dcf5;
+  overflow-x: auto; /* code scrolls inside the box, never the page */
+}
+
+.code-block code {
+  font-family: inherit;
+}
+
+/* ---------- 6. Answer buttons ---------- */
+.answers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.answer-btn {
+  min-height: 48px; /* comfortable touch target */
+  padding: 10px;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.answer-btn:hover:not(:disabled) {
+  border-color: var(--purple);
+  background: rgba(124, 92, 240, 0.15);
+  transform: translateY(-2px);
+}
+
+.answer-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.answer-btn:disabled {
+  cursor: not-allowed;
+}
+
+.answer-btn.is-wrong {
+  opacity: 0.45;
+  text-decoration: line-through;
+  border-color: rgba(251, 191, 119, 0.4);
+}
+
+.answer-btn.is-correct {
+  color: var(--success);
+  border-color: var(--success);
+  background: rgba(110, 231, 183, 0.1);
+}
+
+/* Visible focus ring for keyboard users */
+.answer-btn:focus-visible,
+.logo:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 3px;
+}
+
+/* ---------- 7. Feedback message ---------- */
+.feedback {
+  margin: 16px 0 0;
+  padding: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  min-height: 0;
+}
+
+.feedback.is-hint {
+  padding: 12px 14px;
+  color: var(--hint);
+  background: rgba(251, 191, 119, 0.08);
+  border: 1px solid rgba(251, 191, 119, 0.3);
+  border-radius: 12px;
+}
+
+.feedback.is-success {
+  padding: 12px 14px;
+  color: var(--success);
+  background: rgba(110, 231, 183, 0.08);
+  border: 1px solid rgba(110, 231, 183, 0.3);
+  border-radius: 12px;
+}
+
+/* ---------- 8. Personal intro (hidden until revealed) ---------- */
+.intro {
+  margin-top: 28px;
+  scroll-margin-top: 16px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.intro.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.intro-card {
+  padding: 22px 18px;
+  background: linear-gradient(160deg, rgba(124, 92, 240, 0.14), var(--card) 60%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 0 40px rgba(124, 92, 240, 0.15);
+}
+
+.intro-title {
+  margin: 0 0 14px;
+  font-size: 1.5rem;
+}
+
+.intro-card p {
+  margin: 0 0 14px;
+  color: var(--text);
+}
+
+.intro-question {
+  font-weight: 700;
+  color: var(--purple);
+}
+
+.signature {
+  margin: 18px 0 0 !important;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--muted) !important;
+}
+
+/* ---------- 9. Footer ---------- */
+.site-footer {
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.footer-line {
+  margin: 0 0 6px;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.footer-sign {
+  color: var(--purple);
+}
+
+/* ---------- 10. Animations ---------- */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- 11. Small phones ---------- */
+@media (max-width: 360px) {
+  .status-label {
+    font-size: 0.55rem;
+  }
+  .code-block {
+    font-size: 0.78rem;
+  }
+  .answer-btn {
+    font-size: 0.9rem;
+  }
+}
+
+/* ---------- 12. Larger screens ---------- */
+@media (min-width: 600px) {
+  .page {
+    padding: 28px 24px 56px;
+  }
+  .terminal-body,
+  .intro-card {
+    padding: 26px;
+  }
+  .hero {
+    padding-top: 72px;
+  }
+}
+
+/* ---------- 13. Respect reduced-motion setting ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .intro {
+    opacity: 1;
+    transform: none;
+  }
+}
